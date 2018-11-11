@@ -1,25 +1,16 @@
 package com.kodilla.testing;
 
-import com.kodilla.testing.calculator.Calculator;
+import com.kodilla.testing.collection.OddNumbersExterminator;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class TestingMain {
     public static void main(String[] args){
-        System.out.println("Modul 6.Wprowadzenie do testowania oprogramowania");
 
-        Calculator result= new Calculator(50,20);
-
-        int addition = result.addAToB();
-        if (addition==(50+20)){
-            System.out.println ("Addition test positive");
-        }else {
-            System.out.println("Addition test error");
-        }
-
-        int substraction = result.substractAFromB();
-        if (substraction==(50-20)){
-            System.out.println ("Substraction test positive");
-        }else {
-            System.out.println("Substraction test error");
+        ArrayList<Integer> normalList = new ArrayList<>();
+        Random generator = new Random();
+        for(int n=0;n<10;n++){
+            normalList.add(generator.nextInt(10));
         }
     }
 }
