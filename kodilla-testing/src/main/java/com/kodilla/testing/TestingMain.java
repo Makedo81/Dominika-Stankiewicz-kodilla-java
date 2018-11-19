@@ -1,5 +1,5 @@
 package com.kodilla.testing;
-
+/*
 import com.kodilla.testing.collection.OddNumbersExterminator;
 import java.util.ArrayList;
 import java.util.Random;
@@ -13,4 +13,4 @@ public class TestingMain {
             normalList.add(generator.nextInt(10));
         }
     }
-}
+} */

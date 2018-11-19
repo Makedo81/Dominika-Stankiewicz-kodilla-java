@@ -1,4 +1,4 @@
-package com.kodilla.testing.collection;
+package com.kodilla.testing.collection;/*
 import com.kodilla.testing.collection.OddNumbersExterminator;
 import org.junit.After;
 import org.junit.Assert;
@@ -20,19 +20,33 @@ public class CollectionTestSuite {
         }
     @Test
     public void testOddNumberExterminatorNormalList(){
-
+        //given
         ArrayList<Integer> normalList = new ArrayList<>();
         Random generator = new Random();
         for(int n=0;n<10;n++){
             normalList.add(generator.nextInt(10));
         }
         OddNumbersExterminator evenNumbersList = new OddNumbersExterminator();
-        ArrayList<Integer> result = evenNumbersList.exterminate(ArrayList<Integer>normalList);
-        Assert.assertEquals(normalList.get(generator.nextInt(10))%2,result);
+        //when
+        ArrayList<Integer> result = evenNumbersList.exterminate(normalList);
+        ArrayList<Integer> expectedList = evenNumbersList.exterminate(normalList).size();
+        //then
+        Assert.assertEquals(expectedList,result.size());
+       // Assert.assertNotEquals(normalList,result);
     }
     @Test
     public void testOddNumberExterminatorEmptylList(){
-
-
+        //given
+        ArrayList<Integer> normalList = new ArrayList<>();
+        //when
+        Random generator = new Random();
+        for(int n=0;n<10;n++){
+            normalList.add(generator.nextInt(10));
         }
-    }
+        //then
+        //boolean result=normalList.add(generator.nextInt(10));
+        //Assert.assertTrue(result);
+        boolean result=normalList.isEmpty();
+        Assert.assertFalse(result);
+        }
+    } */
