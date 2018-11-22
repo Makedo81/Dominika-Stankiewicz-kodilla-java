@@ -1,4 +1,4 @@
-package com.kodilla.testing.collection;/*
+package com.kodilla.testing.collection;
 import com.kodilla.testing.collection.OddNumbersExterminator;
 import org.junit.After;
 import org.junit.Assert;
@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Random;
+
 
 public class CollectionTestSuite {
 
@@ -20,33 +20,36 @@ public class CollectionTestSuite {
         }
     @Test
     public void testOddNumberExterminatorNormalList(){
+        System.out.println("testOddNumberExterminatorNormalList()");
         //given
         ArrayList<Integer> normalList = new ArrayList<>();
-        Random generator = new Random();
-        for(int n=0;n<10;n++){
-            normalList.add(generator.nextInt(10));
-        }
-        OddNumbersExterminator evenNumbersList = new OddNumbersExterminator();
-        //when
-        ArrayList<Integer> result = evenNumbersList.exterminate(normalList);
-        ArrayList<Integer> expectedList = evenNumbersList.exterminate(normalList).size();
+            normalList.add(1);
+            normalList.add(2);
+            normalList.add(3);
+            normalList.add(4);
+            normalList.add(5);
+
+        ArrayList<Integer> expectedList = new ArrayList<>();
+            expectedList.add(2);
+            expectedList.add(4);
+    //when
+        OddNumbersExterminator allNumbersList = new OddNumbersExterminator();
+        ArrayList<Integer> result = allNumbersList.exterminate(normalList);
+        //ArrayList<Integer> result = normalList.exterminate();
         //then
-        Assert.assertEquals(expectedList,result.size());
-       // Assert.assertNotEquals(normalList,result);
+        Assert.assertEquals(expectedList,result);
     }
     @Test
     public void testOddNumberExterminatorEmptylList(){
+        System.out.println("testOddNumberExterminatorEmptylList()");
         //given
-        ArrayList<Integer> normalList = new ArrayList<>();
+        ArrayList<Integer> emptyList = new ArrayList<>();
         //when
-        Random generator = new Random();
-        for(int n=0;n<10;n++){
-            normalList.add(generator.nextInt(10));
-        }
+        emptyList.size();
+
         //then
-        //boolean result=normalList.add(generator.nextInt(10));
-        //Assert.assertTrue(result);
-        boolean result=normalList.isEmpty();
-        Assert.assertFalse(result);
+        boolean result= emptyList.isEmpty();
+
+        Assert.assertTrue(result);
         }
-    } */
+    }
