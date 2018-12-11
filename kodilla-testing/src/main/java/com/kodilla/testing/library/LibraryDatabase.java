@@ -1,4 +1,4 @@
-package com.kodilla.testing.library;
+package com.kodilla.testing.library;/*
 import java.util.List;
 
 public interface LibraryDatabase {
@@ -15,6 +15,7 @@ public interface LibraryDatabase {
 
     // return all books borrowed by libraryUser to the library
     // returns number of books returned back
-    int returnBooks(LibraryUser libraryUser);*/
+    int returnBooks(LibraryUser libraryUser);
 }
+*/
 

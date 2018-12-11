@@ -4,13 +4,22 @@ import java.util.Set;
 
 public final class Continent {
 
-    private final Country country;
-    private final Set<Country> continent = new HashSet<>();
+    private final Set<Country> countries = new HashSet<>();
 
-    public void addCountry(Country country){
-        continent.add(country);
+    public void addCountry(Country country) {
+
+        countries.add(country);
     }
-    public Set<Country>getCountry() {
-        return continent;
+
+    public Set<Country> getCountries() {
+
+        return new HashSet <>(countries);
+    }
+
+    @Override
+    public String toString() {
+        return "Continent{" +
+                "country=" + countries +
+                '}';
     }
 }

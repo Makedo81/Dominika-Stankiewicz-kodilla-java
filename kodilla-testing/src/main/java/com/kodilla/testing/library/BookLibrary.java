@@ -1,4 +1,4 @@
-package com.kodilla.testing.library;
+package com.kodilla.testing.library;/*
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,5 +19,24 @@ public class BookLibrary {
         bookList = resultList;
         return bookList;
     }
-    public List<Book> listBooksInHandsOf(LibraryUser libraryUser);
-}
+
+    public int listBooksInHandsOf(LibraryUser libraryUser) {
+        List<Book> bookList = new ArrayList<Book>();
+       // if (libraryUser == (libraryUser)) return bookList;
+        List<Book> resultList = libraryDatabase.listBooksInHandsOf(libraryUser);
+        boolean true = resultList.contains(0);
+        if (true) {
+            bookList = resultList;
+            boolean true = resultList.contains(1);
+            if (true) {
+                bookList = resultList;
+                boolean true = resultList.contains(5);
+                if (true) {
+                    return resultList;
+                    bookList = resultList;
+                }
+
+            }
+        }
+    }
+}*/

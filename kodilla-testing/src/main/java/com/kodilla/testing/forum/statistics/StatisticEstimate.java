@@ -1,25 +1,30 @@
 package com.kodilla.testing.forum.statistics;
+import java.util.ArrayList;
 
 
-public class StatisticEstimate {
+public class StatisticEstimate  {
 
     Statistics statistics;
-    int forumUserscount=statistics.userNames().size();
-    int forumPostCount=statistics.postsCount().size();
-    int forumCommentsCount=statistics.commentsCount().size();
-    int averagePostsPerUser;
+    int postsCount;
+    int commentsCount;
+    int usersNames;
+    int averagePostPerUser;
     int averageCommentsPerUser;
     int averageCommentsPerPost;
 
     public StatisticEstimate(Statistics statistics) {
-        this.statistics =statistics;
-        this.averagePostsPerUser;
-        this.averageCommentsPerUser;
-        this.averageCommentsPerPost;
+
+        this.statistics = statistics;
     }
 
+    public void calculateAdvStatistics(Statistics statistics) {
 
-    public double calculateAdvStatistics(Statistics statistics) {
+        postsCount = statistics.postsCount();
+        commentsCount = statistics.commentsCount();
+        usersNames = statistics.userNames().size();
+        averagePostPerUser = statistics.postsCount()/statistics.userNames().size();
+        averageCommentsPerUser = statistics.commentsCount()/statistics.userNames().size();
+        averageCommentsPerPost = statistics.commentsCount()/statistics.postsCount();
 
     }
-}*/
+}

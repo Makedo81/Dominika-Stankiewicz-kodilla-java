@@ -1,25 +1,23 @@
 package com.kodilla.stream.world;
-
 import java.math.BigDecimal;
 
-
-public final class Country {
+public final class Country{
 
     private final String countryName;
-    private final long peoplesQuantity;
+    private final BigDecimal peoplesQuantity;
 
-    public Country(final String countryName,final long peoplesQuantity) {
+
+    public Country(final String countryName,final BigDecimal peoplesQuantity) {
         this.countryName = countryName;
         this.peoplesQuantity = peoplesQuantity;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public String getCountryName(){
+        return (countryName);
     }
 
     public BigDecimal getPeoplesQuantity() {
-        BigDecimal countryPeoplesQuantity = BigDecimal.valueOf(peoplesQuantity);
-        return countryPeoplesQuantity;
+        return peoplesQuantity;
     }
 
     @Override
@@ -44,3 +42,4 @@ public final class Country {
                 '}';
     }
 }
+

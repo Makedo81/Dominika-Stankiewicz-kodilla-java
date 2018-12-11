@@ -1,5 +1,5 @@
 package com.kodilla.testing.forum.tdd;
-/*import com.kodilla.testing.forum.ForumPost;
+import com.kodilla.testing.forum.ForumPost;
 import com.kodilla.testing.forum.ForumComment;
 import com.kodilla.testing.forum.ForumUser;
 
@@ -143,4 +143,4 @@ public class ForumTestSuit {
         Assert.assertTrue(result);
         Assert.assertEquals(0, forumUser.getCommentsQuantity());
     }
-}*/
+}

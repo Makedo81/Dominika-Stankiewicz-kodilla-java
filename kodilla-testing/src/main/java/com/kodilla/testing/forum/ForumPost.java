@@ -1,5 +1,5 @@
 package com.kodilla.testing.forum;
-/*
+
 public class ForumPost {
     String postBody;
     String author;
@@ -34,4 +34,4 @@ public class ForumPost {
         result = 31 * result + author.hashCode();
         return result;
     }
-}  */
+}

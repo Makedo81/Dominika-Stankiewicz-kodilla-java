@@ -3,25 +3,38 @@ import java.util.ArrayList;
 
 public class ShapeCollector {
 
-    private Shape shape;
-    private ArrayList<Shape> figuresCollection = new ArrayList<>();
+     Shape shape;
+     ArrayList<Shape> figuresCollection = new ArrayList<>() ;
+   //  ArrayList<Shape> figureToShow= new ArrayList<>();
 
-    public ShapeCollector(Shape shape) {
+    public ShapeCollector() {
+
         this.shape = shape;
     }
-     public void addFigure(Shape shape){
+
+    public ArrayList<Shape> addFigure(Shape shape){
 
          figuresCollection.add(shape);
+         return figuresCollection;
      }
-    public Shape removeFigure(Shape shape) {
-
+    public boolean removeFigure(Shape shape){
+        boolean figureRemoved =false;
+            if(figuresCollection.contains(shape)){
+            figuresCollection.remove(shape);
+            figureRemoved = true;
+        }
+            return figureRemoved;
     }
 
-    public int getFigure(int n){
-
+    public Shape getFigure(int n){
+        Shape figure = figuresCollection.get(n);
+        return figure;
     }
-
-    public Shape showFigures(){
-
+    public ArrayList<Shape> showFigures() {
+        ArrayList<Shape> figureToShow= new ArrayList<>();
+        for (Shape figure : figuresCollection){
+            figureToShow.add(figure);
+        }
+        return figureToShow;
     }
 }
