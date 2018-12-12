@@ -1,5 +1,4 @@
 package com.kodilla.testing.shape;
-import com.kodilla.testing.shape.ShapeCollector;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -23,14 +22,19 @@ public class ShapeCollectorTestSuite {
     public void testRemoveFigure() {
         //given
         Shape circle = new Circle(5);
+        Shape circle1 = new Circle(4);
+        Shape square = new Square(4);
         ShapeCollector shapeCollector = new ShapeCollector();
-        ArrayList<Shape> figuresList = new ArrayList<>();
-        figuresList.add(circle);
-        figuresList.remove(circle);
+
+        shapeCollector.addFigure(circle);
+        shapeCollector.addFigure(circle1);
+        shapeCollector.addFigure(square);
         //when
-        boolean figureRemoved=shapeCollector.removeFigure(circle);
+        shapeCollector.removeFigure(circle);
         //then
-        Assert.assertFalse(figureRemoved);
+        int result = shapeCollector.figuresCollection.size();
+        Assert.assertEquals(2,result);
+
     }
     @Test
     public void testGetFigure(){

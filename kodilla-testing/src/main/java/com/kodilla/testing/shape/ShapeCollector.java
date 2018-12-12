@@ -5,7 +5,6 @@ public class ShapeCollector {
 
      Shape shape;
      ArrayList<Shape> figuresCollection = new ArrayList<>() ;
-   //  ArrayList<Shape> figureToShow= new ArrayList<>();
 
     public ShapeCollector() {
 
@@ -17,13 +16,11 @@ public class ShapeCollector {
          figuresCollection.add(shape);
          return figuresCollection;
      }
-    public boolean removeFigure(Shape shape){
-        boolean figureRemoved =false;
-            if(figuresCollection.contains(shape)){
+    public boolean removeFigure(Shape shape) {
+
+        if (figuresCollection.contains(shape)) {
             figuresCollection.remove(shape);
-            figureRemoved = true;
-        }
-            return figureRemoved;
+        }return true;
     }
 
     public Shape getFigure(int n){
