@@ -20,7 +20,8 @@ public class ShapeCollector {
 
         if (figuresCollection.contains(shape)) {
             figuresCollection.remove(shape);
-        }return true;
+        }
+        return true;
     }
 
     public Shape getFigure(int n){
