@@ -3,13 +3,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class StatisticEstimateTestSuit {
     @Test
-    public void testCalculateAdvStatisticsForPostNumberEqualsZero() {
+    public void testCalculateAdvStatisticsAveragePostPerUserForPostNumberEqualsZero() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         StatisticEstimate estimator = new StatisticEstimate(statisticsMock);
@@ -17,59 +16,115 @@ public class StatisticEstimateTestSuit {
         int postsNumber = 0;
         when(statisticsMock.postsCount()).thenReturn(postsNumber);
 
+        ArrayList<String> users = new ArrayList<>();
+        for(int i=0;i<100;i++){
+            users.add("user"+i);}
+
+        when(statisticsMock.userNames()).thenReturn(users);
+
         //when
         estimator.calculateAdvStatistics(statisticsMock);
         //then
-        Assert.assertEquals((10),estimator.postsCount());
+        Assert.assertEquals(0,estimator.getAveragePostPerUser(),0);
     }
     @Test
-    public void testCalculateAdvStatisticsForPostNumberEquals100() {
+    public void testCalculateAdvStatisticsAveragePostPerUserForPostNumberEquals1000() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         StatisticEstimate estimator = new StatisticEstimate(statisticsMock);
 
         int postsNumber = 1000;
         when(statisticsMock.postsCount()).thenReturn(postsNumber);
+        ArrayList<String> users = new ArrayList<>();
+        for(int i=0;i<100;i++){
+        users.add("user"+i);}
 
+        when(statisticsMock.userNames()).thenReturn(users);
         //when
         estimator.calculateAdvStatistics(statisticsMock);
         //then
-        Assert.assertEquals(1000,estimator.postsCount());
+        Assert.assertEquals(10,estimator.getAveragePostPerUser(),0);
+    }
+    @Test
+    public void testCalculateAdvStatisticsAveragePostPerUserForUserNumberEquals0() {
+        //given
+        Statistics statisticsMock = mock(Statistics.class);
+        StatisticEstimate estimator = new StatisticEstimate(statisticsMock);
+
+        int postsNumber = 1000;
+        when(statisticsMock.postsCount()).thenReturn(postsNumber);
+        ArrayList<String> users = new ArrayList<>();
+        when(statisticsMock.userNames()).thenReturn(users);
+        //when
+        estimator.calculateAdvStatistics(statisticsMock);
+        //then
+        Assert.assertEquals(0,estimator.getAveragePostPerUser(),0);
+    }
+    @Test
+    public void testCalculateAdvStatisticsAveragePostPerUserForUserNumberEquals0AndPostsNumberEquals0() {
+        //given
+        Statistics statisticsMock = mock(Statistics.class);
+        StatisticEstimate estimator = new StatisticEstimate(statisticsMock);
+
+        int postsNumber = 0;
+        when(statisticsMock.postsCount()).thenReturn(postsNumber);
+        ArrayList<String> users = new ArrayList<>();
+
+        when(statisticsMock.userNames()).thenReturn(users);
+        //when
+        estimator.calculateAdvStatistics(statisticsMock);
+        //then
+        Assert.assertEquals(0,estimator.getAveragePostPerUser(),0);
     }
     @Test
     public void testCalculateAdvStatisticsForCommentsNumberLessThanPostNumber() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         StatisticEstimate estimator = new StatisticEstimate(statisticsMock);
-        ArrayList<String> users = new ArrayList<>();
-        users.add("user1");
-        users.add("user2");
-        users.add("user3");
-        when(statisticsMock.userNames()).thenReturn(users);
 
-        int postsNumber = 30;
-        when(statisticsMock.postsCount()).thenReturn(postsNumber);
-
-        int commentsNumber = 15;
+        int commentsNumber = 7;
         when(statisticsMock.commentsCount()).thenReturn(commentsNumber);
+
+        int postsNumber = 1000;
+        when(statisticsMock.postsCount()).thenReturn(postsNumber);
         //when
         estimator.calculateAdvStatistics(statisticsMock);
         //then
-        Assert.assertEquals((10),estimator.averagePostPerUser);
+        Assert.assertEquals(0.007,estimator.averageCommentsPerPost,0);
     }
     @Test
-    public void testCalculateAdvStatisticsForCommentsNumberMoreThanPostNumber() {
+    public void testCalculateAdvStatisticsAverageCommentsPerPostForCommentsNumberMoreThanPostNumber() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         StatisticEstimate estimator = new StatisticEstimate(statisticsMock);
-        int postsNumber = 30;
+        int commentsNumber = 1500;
+        when(statisticsMock.commentsCount()).thenReturn(commentsNumber);
+        int postsNumber = 1000;
         when(statisticsMock.postsCount()).thenReturn(postsNumber);
 
-        int commentsNumber = 60;
-        when(statisticsMock.commentsCount()).thenReturn(commentsNumber);
         //when
         estimator.calculateAdvStatistics(statisticsMock);
         //then
-        Assert.assertEquals((10),estimator.averagePostPerUser);
+        Assert.assertEquals(1.5,estimator.getAverageCommentsPerPost(), 0);
+    }
+    @Test
+    public void testCalculateAdvStatisticsAveragePostPerUserForCommentsNumberEquals0() {
+        //given
+        Statistics statisticsMock = mock(Statistics.class);
+        StatisticEstimate estimator = new StatisticEstimate(statisticsMock);
+
+        int commentsNumber = 0;
+        when(statisticsMock.commentsCount()).thenReturn(commentsNumber);
+
+        ArrayList<String> users = new ArrayList<>();
+        for(int i=0;i<100;i++){
+            users.add("user"+i);
+        }
+
+        when(statisticsMock.userNames()).thenReturn(users);
+        //when
+        estimator.calculateAdvStatistics(statisticsMock);
+        //then
+        Assert.assertEquals(0,estimator.getAverageCommentsPerUser(),0);
     }
 }
