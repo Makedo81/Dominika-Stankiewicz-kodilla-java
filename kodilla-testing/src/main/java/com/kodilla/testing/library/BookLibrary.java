@@ -1,7 +1,10 @@
-package com.kodilla.testing.library;/*
+package com.kodilla.testing.library;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.emptyList;
 
 public class BookLibrary {
     LibraryDatabase libraryDatabase;
@@ -20,23 +23,13 @@ public class BookLibrary {
         return bookList;
     }
 
-    public int listBooksInHandsOf(LibraryUser libraryUser) {
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
         List<Book> bookList = new ArrayList<Book>();
-       // if (libraryUser == (libraryUser)) return bookList;
         List<Book> resultList = libraryDatabase.listBooksInHandsOf(libraryUser);
-        boolean true = resultList.contains(0);
-        if (true) {
-            bookList = resultList;
-            boolean true = resultList.contains(1);
-            if (true) {
-                bookList = resultList;
-                boolean true = resultList.contains(5);
-                if (true) {
-                    return resultList;
-                    bookList = resultList;
-                }
-
-            }
+        bookList=resultList;
+        if (resultList.size() > 0) {
+             return bookList;
         }
+        else return emptyList();
     }
-}*/
+}

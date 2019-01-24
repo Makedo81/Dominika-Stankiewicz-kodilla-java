@@ -1,14 +1,16 @@
-package com.kodilla.testing.library;/*
-import com.kodilla.testing.library.Book;
-import com.kodilla.testing.library.BookLibrary;
-import com.kodilla.testing.library.LibraryDatabase;
-import java.util.List;
-import java.util.ArrayList;
-import org.junit.Test;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.junit.Assert.assertTrue;
+package com.kodilla.testing.library;
 import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 public class BookDirectoryTestSuite {
 
@@ -33,7 +35,7 @@ public class BookDirectoryTestSuite {
         List<Book> theListOfBooks = bookLibrary.listBooksWithCondition("Secret");
 
         // Then
-        Assert.assertEquals(4, theListOfBooks.size());
+        assertEquals(4, theListOfBooks.size());
     }
     private List<Book> generateListOfNBooks(int booksQuantity) {
         List<Book> resultList = new ArrayList<Book>();
@@ -86,31 +88,29 @@ public class BookDirectoryTestSuite {
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
     @Test
-    public void testListOf0BooksInHandsOf(){
+    public void testListOf0BooksInHandsOf() {
         //Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        LibraryUser user1 = new LibraryUser("Jan","Kowalski",1);
-      //  LibraryUser user2 = new LibraryUser("Adam","Kowalski",2);
+        LibraryUser user1 = new LibraryUser("Jan", "Kowalski", 1);
         List<Book> userBookList = new ArrayList<>();
 
-        when(libraryDatabaseMock.listBooksInHandOf("Jan","Kowalski",1)
-                .thenReturn(userBookList.isEmpty());
+        when(libraryDatabaseMock.listBooksInHandsOf(user1)).thenReturn(userBookList);
 
         //when
-        List<Book> borrowedBooksByUser = bookLibrary.listBooksInHandOf("Jan","Kowalski",1);
+        List<Book> borrowedBooksByUser = bookLibrary.listBooksInHandsOf(user1);
 
         // then
-        Assert.assertEquals(0, borrowedBooksByUser.size());
-
+        assertEquals(0, borrowedBooksByUser.size());
     }
+
     @Test
     public void testListOf5BooksInHandsOf(){
         //Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         LibraryUser user1 = new LibraryUser("Jan","Kowalski",1);
-        //  LibraryUser user2 = new LibraryUser("Adam","Kowalski",2);
+
         List<Book> userBookList = new ArrayList<>();
         Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
         Book book2 = new Book("Secretaries and Directors", "Dilbert Michigan", 2012);
@@ -125,15 +125,15 @@ public class BookDirectoryTestSuite {
         userBookList.add(book5);
 
 
-        when(libraryDatabaseMock.listBooksInHandOf("Jan","Kowalski",1)
-                .thenReturn(userBookList));
+        when(libraryDatabaseMock.listBooksInHandsOf(user1))
+                .thenReturn(userBookList);
 
         //when
-        List<Book> borrowedBooksByUser = bookLibrary.listBooksInHandOf("Jan","Kowalski",1);
+        List<Book> borrowedBooksByUser = bookLibrary.listBooksInHandsOf(user1);
 
         // then
-        Assert.assertEquals(5, borrowedBooksByUser.size());
-        verify(libraryDatabaseMock, times(5)).listBooksInHandOf("Jan","Kowalski",1);
+        assertEquals(5, borrowedBooksByUser.size());
+        //verify(libraryDatabaseMock, times(5)).listBooksInHandsOf(user1);
     }
     @Test
     public void testListOf1BooksInHandsOf(){
@@ -146,15 +146,14 @@ public class BookDirectoryTestSuite {
         Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
         userBookList.add(book1);
 
-        when(libraryDatabaseMock.listBooksInHandOf("Jan","Kowalski",1)
-                .thenReturn(userBookList));
+        when(libraryDatabaseMock.listBooksInHandsOf(user1))
+                .thenReturn(userBookList);
 
         //when
-        List<Book> borrowedBooksByUser = bookLibrary.listBooksInHandOf("Jan","Kowalski",1);
+        List<Book> borrowedBooksByUser = bookLibrary.listBooksInHandsOf(user1);
 
         // then
-        Assert.assertEquals(1, borrowedBooksByUser.size());
-        verify(libraryDatabaseMock, times(1)).listBooksInHandOf("Jan","Kowalski",1);
+        assertEquals(1, borrowedBooksByUser.size());
+        verify(libraryDatabaseMock, times(1)).listBooksInHandsOf(user1);
     }
 }
-*/

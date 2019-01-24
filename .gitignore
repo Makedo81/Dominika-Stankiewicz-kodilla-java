@@ -1,3 +1,18 @@
+kodilla-testing/
+kodilla-stream/
+kodilla-rps/
+kodilla-exception/
+Application.java
+ProductionOrderService.java
+OrderDto.java
+OrderProcessor.java
+OrderRetriever.java
+Order.java
+User.java
+Product.java
+Basket.java
+DeliveryService.java
+
 .gradle
 /build/
 

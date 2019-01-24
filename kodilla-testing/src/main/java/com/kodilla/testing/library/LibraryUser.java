@@ -1,4 +1,4 @@
-package com.kodilla.testing.library;/*
+package com.kodilla.testing.library;
 
 public class LibraryUser {
 
@@ -36,24 +36,23 @@ public class LibraryUser {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        LibraryUser that = (LibraryUser) o;
-
-        if (!firstname.equals(that.firstname)) return false;
-        if (!lastname.equals(that.lastname)) return false;
-        return peselId.equals(that.peselId);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = firstname.hashCode();
-        result = 31 * result + lastname.hashCode();
-        result = 31 * result + peselId.hashCode();
-        return result;
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//
+//        LibraryUser that = (LibraryUser) o;
+//
+//        if (!firstname.equals(that.firstname)) return false;
+//        if (!lastname.equals(that.lastname)) return false;
+//        return peselId.equals(that.peselId);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int result = firstname.hashCode();
+//        result = 31 * result + lastname.hashCode();
+//        result = 31 * result + peselId.hashCode();
+//        return result;
+//    }
 }
-*/
