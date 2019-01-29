@@ -1,7 +1,10 @@
-kodilla-testing/
-kodilla-stream/
-kodilla-rps/
-kodilla-exception/
+/kodilla-testing
+/kodilla-stream
+/kodilla-rps
+/kodilla-exception
+/kodilla-spring-intro
+/kodilla-good-patterns
+/kodilla-spring-web
 
 .gradle
 /build/
