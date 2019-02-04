@@ -1,5 +1,6 @@
 package com.kodilla.spring.portfolio;
 
+import javafx.concurrent.Task;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,13 +8,19 @@ import java.util.List;
 @Component
 public class TaskList {
 
-    private List<String> tasks = new ArrayList<>();
+    private List<String> tasks;
 
-    public List<String> addTask(String task) {
-        return tasks;
+    public TaskList() {
+
+        this.tasks = new ArrayList<>();
     }
 
-    public String getTask(int i) {
-        return tasks.get(i);
+    public List<String> addTask(String task) {
+        tasks.add(task);
+        return new ArrayList<>();
+    }
+
+    public List<String> getTasks() {
+        return tasks;
     }
 }

@@ -1,27 +1,32 @@
 package com.kodilla.spring.portfolio;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 @Configuration
 public class BoardConfig {
 
     @Autowired
+    @Qualifier ("doneList")
     TaskList  doneList;
 
     @Autowired
-    TaskList  toDoList;
+    @Qualifier ("toDoList")
+    TaskList toDoList;
 
     @Autowired
-    TaskList  inProgressList;
+    @Qualifier ("inProgressList")
+    TaskList inProgressList;
 
-    @Autowired
-    TaskList  taskList;
+    @Bean
+    public Board getBoard(){
 
-    @Autowired
-    public Board board(TaskList doneList,TaskList toDoList){
-        return new Board(doneList,toDoList);
+        return new Board(toDoList,inProgressList,doneList);
     }
 
     @Bean(name="doneList")

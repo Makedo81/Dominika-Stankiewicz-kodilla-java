@@ -1,6 +1,5 @@
 package com.kodilla.spring.portfolio;
 
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,19 +10,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class BoardTestSuite {
+public class BoardTestSuite {
 
     @Test
     public void testTaskAdd() {
-
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         Board board = context.getBean(Board.class);
-        //When
-        TaskList doneList = board.getDoneList();
-        doneList.addTask("Task for doneList");
-        String result = doneList.getTask(1);
-        //Then
-        Assert.assertEquals("Task for doneList",result);
+
+        board.getToDoList().addTask("Task 1");
+        board.getToDoList().addTask("Task 2");
+        board.getInProgressList().addTask("Task 3");
+        board.getDoneList().addTask("Task 4");
+        board.showTasks();
     }
 }
