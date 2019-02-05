@@ -10,11 +10,11 @@ public class BigMacTestSuite {
         //given
         BigMac bigMac = new BigMac.BigMacBuilder()
 
-                .setBun("sesam")
-                .setBun("plain")
-                .setBurgers(2)
-                .setSauceType("mild")
-                .setSauceType("spicy")
+                .Bun("sesam")
+                .Bun("plain")
+                .Burgers(2)
+                .SauceType("mild")
+                .SauceType("spicy")
                 .build();
 
         System.out.println(bigMac);

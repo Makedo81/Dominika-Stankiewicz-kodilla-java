@@ -3,6 +3,8 @@ package com.kodilla.patterns.prototype.library;
 import org.junit.Assert;
 import org.junit.Test;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LibraryTestSuite {
 
@@ -12,15 +14,17 @@ public class LibraryTestSuite {
         //Given
         Book book1  = new Book("Title One","Dirk", LocalDate.of(2008,11,2));
         Book book2  = new Book("Title Two","Dominika",LocalDate.of(1999,12,4));
+//
+//        Set<Book> books = new HashSet<>();
+//        books.add(book1);
+//        books.add(book2);
 
-      //  Set<Book> books = new HashSet<>();
-       // books.add(book1);
-       // books.add(book2);
 
         //When
         Library library = new Library ("Library");
         library.getBooks().add(book1);
         library.getBooks().add(book2);
+//        library.setBooks(books);
 
         Library clonedLibrary = null;
         try {

@@ -17,9 +17,11 @@ public class ProductOrderService {
             if (orderValidated) {
                 System.out.println("Order is processed");
                 deliveryService.sendOrder(order);
-                return new OrderDto(order.getUser(), true);
+                System.out.println(new OrderDto(order.getUser(),true));
+                return new OrderDto(order.getUser(),true);
             } else {
-                return new OrderDto(order.getUser(), false);
+                System.out.println(new OrderDto(order.getUser(),false));
+                return new OrderDto(order.getUser(),false);
             }
         }
     }

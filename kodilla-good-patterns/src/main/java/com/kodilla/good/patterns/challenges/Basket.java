@@ -20,9 +20,9 @@ public class Basket {
 
     @Override
     public String toString() {
-        return "Basket{" +
-                "product='" + product + '\'' +
-                ", quantity=" + quantity +
+        return "  Basket{" +
+                "product ='" + product + '\'' +
+                ", quantity =" + quantity +
                 '}';
     }
 }

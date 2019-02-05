@@ -15,17 +15,17 @@ public final class BigMac {
         private int burgers;
         private List<String> sauce = new ArrayList<>();
 
-        public BigMacBuilder setBun(String bun) {
+        public BigMacBuilder Bun(String bun) {
             this.bun = bun;
             return this;
         }
 
-        public BigMacBuilder setBurgers(int burgers) {
+        public BigMacBuilder Burgers(int burgers) {
             this.burgers = burgers;
             return this;
         }
 
-        public BigMacBuilder setSauceType(String sauceType) {
+        public BigMacBuilder SauceType(String sauceType) {
             sauce.add(sauceType);
             return this;
         }
