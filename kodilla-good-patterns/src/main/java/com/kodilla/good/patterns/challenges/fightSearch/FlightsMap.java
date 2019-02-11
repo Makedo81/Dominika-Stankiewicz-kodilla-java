@@ -7,20 +7,26 @@ import java.util.Map;
 
 public class FlightsMap {
 
-    public Map<Airport, List<Airport>> getFlight() {
+    public Map<String, List<Flight>> getFlight() {
 
-        List<Airport> Warsaw = new ArrayList<>();
-        Warsaw.add(new Airport("Danzig"));
-        Warsaw.add(new Airport("Berlin"));
+        List<Flight> Warsaw = new ArrayList<>();
+        Warsaw.add(new Flight("Warsaw","Danzig"));
+        Warsaw.add(new Flight("Warsaw","Berlin"));
 
-        List<Airport> Berlin = new ArrayList<>();
-        Berlin.add(new Airport("Danzig"));
-        Berlin.add(new Airport("Hamburg"));
-        Berlin.add(new Airport("Amsterdam"));
+        List<Flight> Berlin = new ArrayList<>();
+        Berlin.add(new Flight("Berlin","Danzig"));
+        Berlin.add(new Flight("Berlin","Hamburg"));
+        Berlin.add(new Flight("Berlin","Amsterdam"));
 
-        Map<Airport, List<Airport>> availableFlights = new HashMap<>();
-        availableFlights.put(new Airport("Warsaw"),Warsaw);
-        availableFlights.put(new Airport("Berlin"),Berlin);
+        List<Flight> Danzig = new ArrayList<>();
+        Danzig.add(new Flight("Danzig","London"));
+        Danzig.add(new Flight("Danzig","Moscow"));
+        Danzig.add(new Flight("Danzig","Amsterdam"));
+
+        Map<String, List<Flight>> availableFlights = new HashMap<>();
+        availableFlights.put("Warsaw",Warsaw);
+        availableFlights.put("Berlin",Berlin);
+        availableFlights.put("Danzig",Danzig);
 
         return availableFlights;
     }
