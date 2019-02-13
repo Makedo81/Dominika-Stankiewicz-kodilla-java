@@ -9,7 +9,6 @@ public class FlightSearch {
 
     FlightsMap flightsMap = new FlightsMap();
 
-
     public List<Flight> findFlightsFrom(String cityDeparture) {
 
         List<Flight> flightsAvailableFrom=flightsMap.getFlight().entrySet().stream()
