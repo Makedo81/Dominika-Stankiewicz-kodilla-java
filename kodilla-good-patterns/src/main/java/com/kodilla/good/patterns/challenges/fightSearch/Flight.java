@@ -10,6 +10,9 @@ public class Flight {
         this.cityArrival = cityArrival;
     }
 
+    public Flight() {
+
+    }
 
 
     public String getCityDeparture() {
