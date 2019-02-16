@@ -1,6 +1,8 @@
 package com.kodilla.exception.test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Flight {
     String departureAirport;
@@ -11,22 +13,6 @@ public class Flight {
         this.arrivalAirport = arrivalAirport;
     }
 
-
-
-    public void addFlight(Flight flight) {
-
-        ArrayList<Flight> flights = new ArrayList<>();
-        Flight flight1 = new Flight("Berlin", "London");
-        Flight flight2 = new Flight("Amsterdam", "London");
-        Flight flight3 = new Flight("Amsterdam", "Prague");
-
-        flights.add(flight1);
-        flights.add(flight2);
-        flights.add(flight3);
-    }
-    public void getFlight(){
-
-    }
     public String getDepartureAirport() {
         return departureAirport;
     }
