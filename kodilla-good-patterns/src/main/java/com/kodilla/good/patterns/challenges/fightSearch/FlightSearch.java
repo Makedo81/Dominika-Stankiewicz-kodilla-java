@@ -1,6 +1,8 @@
 package com.kodilla.good.patterns.challenges.fightSearch;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
@@ -9,42 +11,61 @@ public class FlightSearch {
 
     FlightsMap flightsMap = new FlightsMap();
 
-    public List<Flight> findFlightsFrom(String cityDeparture) {
+    private List<Flight> findFlightsFrom(String cityDeparture) {
 
-        List<Flight> flightsAvailableFrom=flightsMap.getFlight().entrySet().stream()
+          List<Flight> flightsAvailableFrom = flightsMap.getFlight().entrySet().stream()
                 .filter(k -> k.getKey().equals(cityDeparture))
                 .flatMap(v -> v.getValue().stream())
                 .collect(Collectors.toList());
-        System.out.println("Available flights from " + cityDeparture + ":" + "\n" + flightsAvailableFrom);
         return flightsAvailableFrom;
     }
 
-    public Flight findFlightsTo(String cityArrival) {
+    private List<Flight> findFlightsTo(String cityArrival) {
 
-        Flight alternativeFlight = new Flight();
-        List<Flight> flight = flightsMap.getFlight().entrySet().stream()
+        List<Flight> flights = flightsMap.getFlight().entrySet().stream()
                 .flatMap(k -> k.getValue().stream())
                 .filter(m -> m.getCityArrival().equals(cityArrival))
                 .collect(toList());
-        System.out.println(flight);
-        for (int i = 0; i < flight.size(); i++) {
-            alternativeFlight = flight.get(i); //tutaj lista flights ma 2 obiekty
-        }
-        return alternativeFlight; //zwraca tylko jeden obiekt.
-        // Nie wiem gdzie dodac petle zeby zwracane byly wszystkie mozliwe obiekty
-        // dla metody findNonDirectFlight(Flight flight)
-        //np.wywolujac metode dla "warszawa-amsterdam" zwraca mi tylko jeden lot
+        return flights;
     }
 
-    public void findNonDirectFlight(Flight flight) {
-
+    private Map<Flight,List<Flight>> findNonDirectFlight(Flight flight) {
+        Map<Flight,List<Flight>> nonDirectFlights = new HashMap<>();
         if (!findFlightsFrom(flight.getCityDeparture()).contains(flight)) {
             System.out.println("Checking non direct flights...");
-            Flight alternativeAirport = findFlightsTo(flight.getCityArrival());
-            System.out.println("Available flight :" + "\n" + flight.getCityDeparture()+"-"
-                    +alternativeAirport.getCityDeparture()+"-"+flight.getCityArrival());
+            List<Flight>alternativeAirport = findFlightsTo(flight.getCityArrival());
+            System.out.println("Available flights to " + flight.getCityArrival() + ":" + "\n");
+            for (Flight flightTo : alternativeAirport) {
+                System.out.println(flightTo);
+            }
+            nonDirectFlights.put(flight,alternativeAirport);
         }
-        else System.out.println("Available flights to "+flight.getCityArrival()+":");
-            findFlightsTo(flight.getCityArrival());
+        return nonDirectFlights;
+    }
+    public void findFlight(Flight flight) {
+
+        boolean flightExist = findFlightsFrom(flight.getCityDeparture()).contains(flight);
+            List<Flight> availableFlights = findFlightsFrom(flight.getCityDeparture());
+            System.out.println("Available flights from " + flight.cityDeparture + ":" + "\n");
+            for (Flight flightTo : availableFlights) {
+                System.out.println(flightTo);
+            }
+            if(flightExist){
+            List<Flight> availableFlightsTo = findFlightsTo(flight.getCityArrival());
+                System.out.println("Available flights to " + flight.cityArrival + ":" + "\n");
+                for (Flight flightFrom : availableFlightsTo) {
+                    System.out.println(flightFrom);
+                }
+
+        }   else {
+                Map<Flight,List<Flight>> entry = findNonDirectFlight(flight);
+                entry.forEach((key, value) -> {
+                    for (Flight flight1 : value) {
+                        String connection = key.cityDeparture + "-" + flight1.getCityDeparture()+ "-" + key.getCityArrival();
+                        System.out.println("Non direct connection found : " + "\n" + connection + "\n");
+                    }
+                });
+            }
     }
 }
+
