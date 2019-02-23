@@ -15,16 +15,16 @@ public class TaskListDaoTestSuite {
 
     @Autowired
     public TaskListDao taskListDao;
-    private static final String LIST = "In progress";
+    private static final String LISTNAME = "In progress";
 
     @Test
     public void testFindByListName() {
         //Given
-        TaskList taskList = new TaskList(LIST,"Tasks with open deadlines");
+        TaskList taskList = new TaskList(LISTNAME,"Tasks with open deadlines");
         taskListDao.save(taskList);
-        String listName = taskList.getListName();
+        String name = taskList.getListName();
         //When
-        List<TaskList> taskListResult = taskListDao.findByName(listName);
+        List<TaskList> taskListResult = taskListDao.findByListName(name);
         //Then
         Assert.assertEquals(1,taskListResult.size());
         //CleanUp
