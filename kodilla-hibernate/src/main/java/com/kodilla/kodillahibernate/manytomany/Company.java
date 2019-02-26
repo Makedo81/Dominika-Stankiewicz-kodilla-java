@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 @NamedNativeQuery
         (name = "Company.retrieveByChar",
-                query = "Select COMPANY_NAME From COMPANIES where COMPANY_NAME like 'sof%'",
+                query = "Select * From COMPANIES where COMPANY_NAME like 'sof%'",
         resultClass = Company.class
         )
 
