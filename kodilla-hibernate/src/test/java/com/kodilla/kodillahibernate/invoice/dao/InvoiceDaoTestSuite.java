@@ -60,8 +60,7 @@ public class InvoiceDaoTestSuite {
 
 
         //Then
-        Assert.assertEquals(1,invoiceId);
-        //Assert.assertNotEquals(0,invoiceId);
+        Assert.assertNotEquals(0,invoiceId);
 
         //CleanUp
         invoiceDao.delete(invoiceId);
