@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 @NamedNativeQuery
         (name = "Company.retrieveByChar",
-                query = "Select * From COMPANIES where COMPANY_NAME like 'sof%'",
+                query = "Select * From COMPANIES where COMPANY_NAME like '%ma%'",
         resultClass = Company.class
         )
 
@@ -45,6 +45,7 @@ public class Company {
     private void setName(String name) {
         this.name = name;
     }
+
     @ManyToMany(cascade = CascadeType.ALL,mappedBy = "companies")
     public List<Employee> getEmployees() {
         return employees;

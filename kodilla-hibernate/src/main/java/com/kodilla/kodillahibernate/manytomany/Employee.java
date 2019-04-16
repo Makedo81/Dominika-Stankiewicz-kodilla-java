@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 @NamedQuery
         (name = "Employee.retrieveByLastname",
-         query = "From Employee where lastname = :LASTNAME" )
+        // query = "From Employee where lastname = :LASTNAME"
+                 query = "From Employee where lastname LIKE '%s%'")
 
 @Entity
 @Table(name = "EMPLOYEES")
