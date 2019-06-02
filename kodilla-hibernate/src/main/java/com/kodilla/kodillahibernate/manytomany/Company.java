@@ -4,12 +4,16 @@ import com.sun.istack.internal.NotNull;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @NamedNativeQuery
         (name = "Company.retrieveByChar",
                 query = "Select * From COMPANIES where COMPANY_NAME like '%ma%'",
-        resultClass = Company.class
+                resultClass = Company.class
         )
-
+@NamedQuery
+        (name = "Company.retrieveNameByAnyChar",
+                query = "FROM Company WHERE name LIKE concat ('%',:ANYCHAR,'%') "
+        )
 @Entity
 @Table(name = "COMPANIES")
 public class Company {

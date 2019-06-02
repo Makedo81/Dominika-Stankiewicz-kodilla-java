@@ -5,11 +5,15 @@ import com.sun.istack.internal.NotNull;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-@NamedQuery
-        (name = "Employee.retrieveByLastname",
-        // query = "From Employee where lastname = :LASTNAME"
-                 query = "From Employee where lastname LIKE '%s%'")
-
+@NamedQueries({
+        @NamedQuery
+                (name = "Employee.retrieveByLastname",
+                        query = "From Employee where lastname = :LASTNAME"),
+        @NamedQuery
+                (name = "Employee.retrieveEmployeeByAnyChar",
+                        query = "FROM Employee WHERE firstname LIKE concat ('%',:ANYCHAR,'%') or lastname LIKE concat ('%',:ANYCHAR,'%') "
+                )
+})
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
@@ -57,6 +61,7 @@ public class Employee {
     private void setLastname(String lastname) {
         this.lastname = lastname;
     }
+
     @ManyToMany
             (cascade = CascadeType.ALL)
     @JoinTable(
@@ -69,6 +74,7 @@ public class Employee {
     }
 
     public void setCompanies(List<Company> companies) {
+
         this.companies = companies;
     }
 }

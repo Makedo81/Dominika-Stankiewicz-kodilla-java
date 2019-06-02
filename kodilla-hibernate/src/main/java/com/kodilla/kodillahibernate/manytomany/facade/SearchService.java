@@ -9,37 +9,42 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class SearchService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(SearchService.class);
     @Autowired
     CompanyDao companyDao;
     @Autowired
     EmployeeDao employeeDao;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SearchService.class);
-
-    public List<Company> searchCompanyData() {
-        List<Company> resultCompany = companyDao.retrieveByChar();
-        for (Company company : resultCompany) {
-            LOGGER.info("Searching result." + "" + "Found : " + company.getName());
+    public List<Company> searchCompanyData(String key) {
+        List<Company> resultCompany = companyDao.retrieveNameByAnyChar(key);
+        resultCompany.stream()
+                .filter(c -> c.getName().contains(key))
+                .collect(toList());
             if (resultCompany.size() == 0) {
                 LOGGER.info("No criteria matching has been found");
             }
+        for (Company company : resultCompany) {
+            LOGGER.info("Searching result..." + "" + "Found company : " + company.getName());
         }
         return resultCompany;
     }
 
-    public List<Employee> searchEmployeeData() {
-        List<Employee> resultEmployee = employeeDao.retrieveByLastname();
-        for (Employee employee : resultEmployee) {
-            LOGGER.info("Searching result." + "" + "Found : " + employee.getLastname());
-            if (resultEmployee.size() == 0) {
-                LOGGER.info("No criteria matching has been found");
-            }
+    public List<Employee> searchEmployeeData(String key) {
+
+        List<Employee> resultEmployee = employeeDao.retrieveEmployeeByAnyChar(key);
+        resultEmployee.stream()
+                .filter(e -> e.getFirstname().contains(key)||e.getLastname().contains(key))
+                .collect(toList());
+        if (resultEmployee.size() == 0) {
+            LOGGER.info("No criteria matching has been found");
+        }
+        for (Employee employee : resultEmployee) { LOGGER.info("Searching result..." + "" + "Found employee: " + employee.getFirstname() + "" + employee.getLastname());
         }
         return resultEmployee;
     }
-
 }
