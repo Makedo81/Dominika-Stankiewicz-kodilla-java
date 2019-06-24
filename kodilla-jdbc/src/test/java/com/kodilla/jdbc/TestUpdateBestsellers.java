@@ -12,6 +12,7 @@ public class TestUpdateBestsellers {
 
     @Test
     public void testUpdateBestsellers() throws SQLException {
+
         //Given
         DbManager dbManager = DbManager.getInstance();
         String sqlUpdate = "UPDATE BOOKS SET BESTSELLERS = \"1\" ";
